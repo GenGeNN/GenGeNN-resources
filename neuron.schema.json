@@ -1,0 +1,140 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/GenGeNN/GenGeNN-resources/master/neuron.json.schema",
+    "title": "Neuron",
+    "description": "A single neuron definition for GeNN JSON",
+    "type": "object",
+    "properties": {
+        "friendlyName": {
+            "description": "A friendly name for the neuron class",
+            "type": "string"
+        },
+        "summaryDescription": {
+            "description": "A description of the function of the neuron",
+            "type": "string"
+        },
+        "className": {
+            "description": "The programmatic name for the class",
+            "type": "string"
+        },
+        "parameters": {
+            "description": "All the parameter names for the simulation",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "variables": {
+            "description": "All the variable names and types for the simulation",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "required": ["name", "type"],
+                "additionalProperties": false
+            }
+        },
+        "derivedParameters": {
+            "description": "All the names and derivation functions of secondary parameters in the simulation",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "derivation": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "properties": {
+                            "generic": {"type": "string", "minlength": 1},
+                            "python": {"type": "string", "minlength": 1},
+                            "cpp": {"type": "string", "minlength": 1}
+                        },
+                        "additionalProperties": {"type": "string", "minlength": 1}
+                    }
+                },
+                "required": ["name", "derivation"],
+                "additionalProperties": false
+            }
+        },
+        "extraGlobalParameters": {
+            "description": "The names and types of additional parameters for the simulation",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "required": ["name", "type"],
+                "additionalProperties": false
+            }
+        },
+        "additionalInputVariables": {
+            "description": "The names and types of additional input variables for the simulation",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "initial": {
+                        "type": "number"
+                    }
+                },
+                "required": ["name", "type", "initial"],
+                "additionalProperties": false
+            }
+        },
+        "simulationCode": {
+            "description": "The code for the simulation function of the neuron",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "thresholdConditionCode": {
+            "description": "The code describing a threshold condition",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "resetCode": {
+            "description": "The code for the reset function of the neuron",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "supportCode": {
+            "description": "Any additional support code for the neuron",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "isAutoRefactoryRequired": {
+            "description": "Whether the model requires auto-refactory logic to be generated",
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "required": ["friendlyName","summaryDescription","className"]
+}
