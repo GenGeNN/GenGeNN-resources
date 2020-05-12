@@ -34,8 +34,7 @@
                         "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "enum": ["scalar","vector"]
+                        "type": "string"
                     }
                 },
                 "required": ["name", "type"],
@@ -66,7 +65,7 @@
                 "additionalProperties": false
             }
         },
-        "additionalParameters": {
+        "extraGlobalParameters": {
             "description": "The names and types of additional parameters for the simulation",
             "type": "array",
             "items": {
@@ -76,16 +75,15 @@
                         "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "enum": ["scalar","vector"]
+                        "type": "string"
                     }
                 },
                 "required": ["name", "type"],
                 "additionalProperties": false
             }
         },
-        "additionalVariables": {
-            "description": "The names and types of additional variables for the simulation",
+        "additionalInputVariables": {
+            "description": "The names and types of additional input variables for the simulation",
             "type": "array",
             "items": {
                 "type": "object",
@@ -94,8 +92,7 @@
                         "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "enum": ["scalar","vector"]
+                        "type": "string"
                     },
                     "initial": {
                         "type": "number"
@@ -137,11 +134,6 @@
             "description": "Whether the model requires auto-refactory logic to be generated",
             "type": "boolean",
             "default": false
-        },
-        "customBody": {
-            "description": "Additional attributes and methods for the neuron class",
-            "type": "object",
-            "additionalProperties": {"type": "string"}
         }
     },
     "required": ["friendlyName","summaryDescription","className"]
