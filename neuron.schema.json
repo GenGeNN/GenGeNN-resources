@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "https://raw.githubusercontent.com/GenGeNN/GenGeNN-resources/master/neuron.json.schema",
+    "$id": "https://raw.githubusercontent.com/GenGeNN/GenGeNN-resources/master/neuron.schema.json",
     "title": "Neuron",
     "description": "A single neuron definition for GeNN JSON",
     "type": "object",
